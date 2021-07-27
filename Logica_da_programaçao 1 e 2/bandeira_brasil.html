@@ -1,0 +1,62 @@
+<meta charset = 'utf-8'>
+<canvas width="600" height="400"></canvas>
+
+<script>
+var motivaçao = prompt('Escreva aqui o que você deseja que esteja escrito na bandeira    obs:se você for escrever "ordem e progresso" de três espaços');
+    var img = document.querySelector('canvas');
+    var pin = img.getContext('2d');
+
+function texto(x , y, texto) {
+        var img = document.querySelector('canvas');
+        var pincel = img.getContext('2d');
+
+        pin.font='20px Arial';
+        pin.fillStyle='black';
+        pin.fillText(texto, x, y);    
+    }
+        //Fundo verde
+        pin.fillStyle = 'green';
+        pin.fillRect(0,0,800,400);
+
+    //Lozango
+	pin.fillStyle = 'yellow'
+	pin.beginPath();
+	pin.moveTo(300,375);
+	pin.lineTo(25,200);
+	pin.lineTo(300,25);
+	pin.lineTo(575,200);
+	pin.fill();
+
+	   //Circulo azul
+    	pin.fillStyle = 'darkblue';
+        pin.beginPath();
+        pin.arc(300, 200, 100, 0, 2*3.14);
+        pin.fill();
+    
+    //faixa branca
+    pin.fillStyle = 'white';
+    pin.fillRect(200,187,200 ,25);
+
+    //estrelas
+         function estrelinha(aparece){
+            var x = aparece.pageX - img.offsetLeft;
+            var y = aparece.pageY - img.offsetTop ; 
+        pin.beginPath();
+        pin.fillStyle = "white";
+        pin.moveTo(x, y-5);
+        pin.lineTo(x-1, y-1);
+        pin.lineTo(x-5, y-1);
+        pin.lineTo(x-2, y+1);
+        pin.lineTo(x-3, y+5);
+        pin.lineTo(x, y+3);
+        pin.lineTo(x+3, y+5);
+        pin.lineTo(x+2, y+1);
+        pin.lineTo(x+5, y-1);
+        pin.lineTo(x+1, y-1);
+        pin.fill();
+        }
+  img.onclick = estrelinha;
+ texto(200,205,motivaçao,);
+
+  document.write('===> Se você quer estrelas e só clicar onde deseja');
+</script>

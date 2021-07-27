@@ -1,0 +1,37 @@
+<canvas width = "600" height = "400"></canvas>
+<script>
+    var img = document.querySelector('canvas');
+    var pin = img.getContext('2d');
+    pin.fillStyle = 'lightgray';
+    pin.fillRect(0,0,600,400);
+ function circulo(x,y,raio){
+
+    pin.fillStyle = 'blue'
+    pin.beginPath();
+    pin.arc(x,y,raio,0,2*Math.PI);
+    pin.fill();
+ }
+ 
+ function limpa(){
+    pin.clearRect(0,0,600,400);
+ }
+
+   var x = 20;
+   var lado =1; 
+
+    function Tela() {
+
+        limpa();
+        if(x > 600){
+            lado=-1
+        }else if(x < 0){
+            lado = 1
+        } 
+        circulo(x, 20, 10);
+        x = x + lado
+
+    }
+    setInterval(Tela, 10);
+
+    
+</script>

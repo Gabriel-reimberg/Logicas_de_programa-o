@@ -1,0 +1,44 @@
+<canvas width="600" height="400"></canvas>
+<br>
+Escolha uma cor <input type = "color">
+
+<script>
+    var img = document.querySelector('canvas');
+    var pin = img.getContext('2d');
+    var cor = document.querySelector('input');
+
+    pin.fillStyle = 'grey';
+    pin.fillRect(0, 0, 600, 400);
+
+    var desenha = false;
+
+    function desenhaCirculo(evento) {
+
+        if(desenha) {
+            var x = evento.pageX - img.offsetLeft;
+            var y = evento.pageY - img.offsetTop;
+            pin.fillStyle = cor.value;
+            pin.beginPath();
+            pin.arc(x, y, 10, 0, 2 * 3.14);
+            pin.fill();
+        }
+        console.log(x + ',' + y);
+    }
+
+    img.onmousemove = desenhaCirculo;
+
+    function habilitaDesenhar() {
+
+        desenha = true;
+    }
+
+    function desabilitaDesenhar() {
+
+        desenha = false;
+    }
+
+    img.onmousedown = habilitaDesenhar;
+
+    img.onmouseup = desabilitaDesenhar;
+
+</script>
